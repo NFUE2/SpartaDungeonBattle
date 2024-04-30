@@ -35,7 +35,7 @@ namespace SpartaDungeonBattle
                         break;
 
                     case 2: //2번 실행 시 전투 시작
-                        battle.DungeonBattle();
+                        battle.DungeonBattle(status);
                         break;
                 }
             }

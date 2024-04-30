@@ -10,9 +10,10 @@ namespace SpartaDungeonBattle
         bool win = false;
         int killCount, playerCurHp;
 
-        public void DungeonBattle()
+        public void DungeonBattle(PlayerStatus player)
         {
             enemyList = new List<Enemy>();
+            this.player = player;
 
             Random random = new Random();
             int count = random.Next(4);
@@ -81,6 +82,7 @@ namespace SpartaDungeonBattle
         void PlayerPhase()
         {
             int choice;
+
             while (true)
             {
                 BattleDisplay();
