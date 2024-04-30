@@ -13,7 +13,7 @@ namespace SpartaDungeonBattle
 
 
             creation.Creation(); //캐릭터 생성 실행
-            Thread.Sleep(2000);
+            status.FirstStatus(creation.name, creation.job, creation.jobNumber);
             while (true)
             {
                 Console.Clear();
@@ -25,9 +25,7 @@ namespace SpartaDungeonBattle
                 Console.WriteLine("2. 전투 시작");
                 Console.WriteLine();
 
-                Console.WriteLine("원하시는 행동을 입력해주세요.");
-                Console.Write(">>");
-                int choice1 = ConsoleUtility.MenuChoice(1, 2); //행동 선택
+                int choice1 = ConsoleUtility.MenuChoice(1, 2, "행동을"); //행동 선택
                 switch (choice1)
                 {
                     case 1: //1번 실행 시 스테이터스(상태 보기) 열람
