@@ -10,10 +10,11 @@ namespace SpartaDungeonBattle
         bool win = false;
         int killCount, playerCurHp;
 
-        public void DungeonBattle(PlayerStatus player)
+        public void DungeonBattle(ref PlayerStatus player)
         {
             enemyList = new List<Enemy>();
             this.player = player;
+            playerCurHp = player.playerHp;
 
             Random random = new Random();
             int count = random.Next(4);
@@ -68,12 +69,12 @@ namespace SpartaDungeonBattle
 
             for (int i = 0; i < enemyList.Count; i++)
             {
-                if (number) Console.Write($"{i} ");
+                if (number) Console.Write($"{i + 1} ");
                 enemyList[i].Display();
             }
 
             Console.WriteLine();
-            playerCurHp = player.playerHp;
+
             Console.WriteLine("[내정보]");
             Console.WriteLine($"Lv.{player.lv}  {player.playerName}( {player.playerJob} )"); //레벨,직업 기입 필요
             Console.WriteLine($"HP {playerCurHp}/{player.playerHp}\n"); //체력 기입 필요
@@ -98,40 +99,51 @@ namespace SpartaDungeonBattle
                         Console.Clear();
                         BattleDisplay(true);
 
-                        Console.WriteLine("대상을 선택해주세요.\n>>");
+                        Console.Write("대상을 선택해주세요.\n>>");
 
                         if (int.TryParse(Console.ReadLine(), out choice) && (1 <= choice && choice <= enemyList.Count))
                         {
-                            Enemy e = enemyList[choice];
+                            Enemy e = enemyList[choice - 1];
                             if (e.state != State.Dead)
                             {
+                                Console.Clear();
                                 Random random = new Random();
                                 int p = (int)Math.Ceiling((double)player.playerAtk * 0.1); //10% 보정값 올림,플레이어 공격력
                                 int damage = random.Next(player.playerAtk - p, player.playerAtk  + p + 1); //보정값을 추가한 랜덤 공격력
 
-                                Console.WriteLine($"{player.playerName}의 공격!");//플레이어 이름추가필요
-                                Console.WriteLine($"Lv.{e.level} {e.name} 을(를) 맞췄습니다. [데미지 : {damage}]"); //데미지 기입필요
+                                Console.WriteLine($"{player.playerName}의 공격!\n");//플레이어 이름추가필요
+                                Console.WriteLine($"Lv.{e.level} {e.name} 을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 기입필요
 
                                 int curHP = e.hp - damage;
-                                Console.Write($"HP {e.hp} -> {curHP}");
+                                Console.Write($"HP {e.hp} -> ");
 
                                 if (curHP > 0)
                                 {
                                     e.hp = curHP;
+                                    Console.WriteLine($"{curHP}\n");
                                 }
                                 else
                                 {
-                                    Console.Write($"Dead\n");
+                                    e.state = State.Dead;
+                                    killCount++;
+                                    Console.WriteLine($"Dead\n");
                                 }
 
                                 //e.hp -= damage; 데미지
-                                if (e.hp <= 0)
+                                //if (e.hp <= 0)
+                                //{
+
+                                //}
+
+                                while (true)
                                 {
-                                    e.state = State.Dead;
-                                    killCount++;
+                                    Console.Write("0.다음\n>>");
+
+                                    if (int.TryParse(Console.ReadLine(), out choice) && choice == 0) break;
+                                    else Console.WriteLine("잘못된 입력입니다.");
                                 }
 
-                                Thread.Sleep(1000);
+                                return;
                             }
                             else
                             {
@@ -161,30 +173,39 @@ namespace SpartaDungeonBattle
                 Console.Clear();
                 Enemy e = enemyList[i];
 
+                if (e.state == State.Dead) continue;
+
                 Random random = new Random();
-                int p = (int)Math.Ceiling((double)player.playerAtk); //10% 보정값 올림
-                int damage = random.Next(player.playerAtk - p, player.playerAtk + p + 1); //보정값을 추가한 랜덤 공격력
+                int p = (int)Math.Ceiling((double)e.atk * 0.1f); //10% 보정값 올림
+                int damage = random.Next(e.atk - p, e.atk + p + 1); //보정값을 추가한 랜덤 공격력
 
-                Console.WriteLine($"{e.name}의 공격!");
-                Console.WriteLine($"{player.playerName} 을(를) 맞췄습니다. [데미지 : {damage}]"); //플레이어 및 ,데미지 기입필요
+                Console.WriteLine($"{e.name}의 공격!\n");
+                Console.WriteLine($"{player.playerName} 을(를) 맞췄습니다. [데미지 : {damage}]\n"); //플레이어 및 ,데미지 기입필요
 
-                Console.WriteLine($"Lv.{e.level} {e.name}");
+                Console.WriteLine($"Lv.{player.lv} {player.playerName}\n");
 
-                playerCurHp = player.playerHp - damage; //캐릭터 hp 계산 필요
-                Console.Write($"HP {player.playerHp} -> {playerCurHp}"); //캐릭터 hp 필요
-
+                //playerCurHp = player.playerHp - damage; //캐릭터 hp 계산 필요
+                Console.WriteLine($"HP {playerCurHp} -> {playerCurHp - damage}\n"); //캐릭터 hp 필요
+                playerCurHp = playerCurHp - damage;
 
                 if (playerCurHp <= 0) //캐릭터 체력이 0 보다 작을경우
-                {
-                    player.playerHp = 0; //hp 0
-                }
+                    return;
 
-                Thread.Sleep(1000);
+                while(true)
+                {
+                    int choice;
+
+                    Console.Write("0.다음\n>>");
+
+                    if (int.TryParse(Console.ReadLine(), out choice) && choice == 0) break;
+                    else Console.WriteLine("잘못된 입력입니다.");
+                }
             }
         }
 
         void BattleResult()
         {
+            Console.Clear();
             Console.WriteLine("Battle!! - Result\n");
 
             if (win)
@@ -200,8 +221,10 @@ namespace SpartaDungeonBattle
             Console.WriteLine($"Lv.{player.lv} {player.playerName}"); //레벨과 이름을 넣어야함
             Console.WriteLine($"Hp {player.playerHp} -> {playerCurHp} \n");
 
+            ref int hp = ref player.playerHp;
+            hp = playerCurHp;
 
-            Console.WriteLine("0.다음\n>>");
+            Console.Write("0.다음\n>>");
             Console.ReadLine();
         }
     }

@@ -31,11 +31,13 @@ namespace SpartaDungeonBattle
                 switch (choice1)
                 {
                     case 1: //1번 실행 시 스테이터스(상태 보기) 열람
+
+                        Console.WriteLine(status.playerHp);
                         status.Player(creation.name, creation.job, creation.jobNumber);
                         break;
 
                     case 2: //2번 실행 시 전투 시작
-                        battle.DungeonBattle(status);
+                        battle.DungeonBattle(ref status);
                         break;
                 }
             }
