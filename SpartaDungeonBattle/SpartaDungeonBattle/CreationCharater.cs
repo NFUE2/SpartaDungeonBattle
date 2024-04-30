@@ -16,12 +16,13 @@ namespace SpartaDungeonBattle
 
         public void Creation()
         {
+            Console.Clear();
             Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다."); 
             Console.WriteLine("원하시는 이름을 설정해주세요.");
             Console.Write(">>");
             name = Console.ReadLine(); //이름 입력
 
-            Console.WriteLine("");
+            Console.Clear();
             Console.WriteLine("{0}님 환영합니다.", name);
             Console.WriteLine("");
 

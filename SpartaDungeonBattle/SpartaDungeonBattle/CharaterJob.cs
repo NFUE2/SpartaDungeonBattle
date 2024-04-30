@@ -10,7 +10,7 @@ namespace SpartaDungeonBattle
 {
     public class CharaterJob()
     {
-        protected int atk, def, hp;
+        public int atk, def, hp;
 
         public void ChraterStatus()
         {
