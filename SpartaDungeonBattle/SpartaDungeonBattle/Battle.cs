@@ -65,7 +65,6 @@ namespace SpartaDungeonBattle
         {
             Console.Clear();
             Console.WriteLine("Battle!!\n");
-            
 
             for (int i = 0; i < enemyList.Count; i++)
             {
@@ -86,84 +85,196 @@ namespace SpartaDungeonBattle
 
             while (true)
             {
-                BattleDisplay();
-                Console.WriteLine("1. 공격\n");
+                PlayerChoice();
 
-                Console.WriteLine("원하시는 행동을 입력해주세요.");
-                Console.Write(">>");
+                choice = PlayerChoiceTarget();
 
-                if (int.TryParse(Console.ReadLine(), out choice) && choice == 1)
+                switch (choice)
                 {
-                    while (true)
-                    {
-                        Console.Clear();
-                        BattleDisplay(true);
-
-                        Console.Write("대상을 선택해주세요.\n>>");
-
-                        if (int.TryParse(Console.ReadLine(), out choice) && (1 <= choice && choice <= enemyList.Count))
-                        {
-                            Enemy e = enemyList[choice - 1];
-                            if (e.state != State.Dead)
-                            {
-                                Console.Clear();
-                                Random random = new Random();
-                                int p = (int)Math.Ceiling((double)player.playerAtk * 0.1); //10% 보정값 올림,플레이어 공격력
-                                int damage = random.Next(player.playerAtk - p, player.playerAtk  + p + 1); //보정값을 추가한 랜덤 공격력
-
-                                Console.WriteLine($"{player.playerName}의 공격!\n");//플레이어 이름추가필요
-                                Console.WriteLine($"Lv.{e.level} {e.name} 을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 기입필요
-
-                                int curHP = e.hp - damage;
-                                Console.Write($"HP {e.hp} -> ");
-
-                                if (curHP > 0)
-                                {
-                                    e.hp = curHP;
-                                    Console.WriteLine($"{curHP}\n");
-                                }
-                                else
-                                {
-                                    e.state = State.Dead;
-                                    killCount++;
-                                    Console.WriteLine($"Dead\n");
-                                }
-
-                                //e.hp -= damage; 데미지
-                                //if (e.hp <= 0)
-                                //{
-
-                                //}
-
-                                while (true)
-                                {
-                                    Console.Write("0.다음\n>>");
-
-                                    if (int.TryParse(Console.ReadLine(), out choice) && choice == 0) break;
-                                    else Console.WriteLine("잘못된 입력입니다.");
-                                }
-
-                                return;
-                            }
-                            else
-                            {
-                                Console.WriteLine("잘못된 입력입니다.");
-                                continue;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("잘못된 입력입니다.");
-                            continue;
-                        }
-                    }
+                    case -1:
+                        continue;
+                    default:
+                        break;
                 }
-                else
+
+                PlayerAttack(enemyList[choice]);
+                break;
+                //BattleDisplay();
+
+                //Console.WriteLine("1. 공격\n");
+
+                //Console.WriteLine("원하시는 행동을 입력해주세요.");
+                //Console.Write(">>");
+
+                //if (int.TryParse(Console.ReadLine(), out choice) && choice == 1)
+                //{
+                //    while (true)
+                //    {
+                //        Console.Clear();
+                //        BattleDisplay(true);
+
+                //        Console.Write("대상을 선택해주세요.\n>>");
+
+                //        if (int.TryParse(Console.ReadLine(), out choice) && (1 <= choice && choice <= enemyList.Count))
+                //        {
+                //            Enemy e = enemyList[choice - 1];
+                //            if (e.state != State.Dead)
+                //            {
+                //                Console.Clear();
+                //                Random random = new Random();
+                //                int p = (int)Math.Ceiling((double)player.playerAtk * 0.1); //10% 보정값 올림,플레이어 공격력
+                //                int damage = random.Next(player.playerAtk - p, player.playerAtk + p + 1); //보정값을 추가한 랜덤 공격력
+
+                //                Console.WriteLine($"{player.playerName}의 공격!\n");//플레이어 이름추가필요
+                //                Console.WriteLine($"Lv.{e.level} {e.name} 을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 기입필요
+
+                //                int curHP = e.hp - damage;
+                //                Console.Write($"HP {e.hp} -> ");
+
+                //                if (curHP > 0)
+                //                {
+                //                    e.hp = curHP;
+                //                    Console.WriteLine($"{curHP}\n");
+                //                }
+                //                else
+                //                {
+                //                    e.state = State.Dead;
+                //                    killCount++;
+                //                    Console.WriteLine($"Dead\n");
+                //                }
+
+                //                //e.hp -= damage; 데미지
+                //                //if (e.hp <= 0)
+                //                //{
+
+                //                //}
+
+                //                while (true)
+                //                {
+                //                    Console.Write("0.다음\n>>");
+
+                //                    if (int.TryParse(Console.ReadLine(), out choice) && choice == 0) break;
+                //                    else Console.WriteLine("잘못된 입력입니다.");
+                //                }
+
+                //                return;
+                //            }
+                //            else
+                //            {
+                //                Console.WriteLine("잘못된 입력입니다.");
+                //                continue;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            Console.WriteLine("잘못된 입력입니다.");
+                //            continue;
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    Console.WriteLine("잘못된 입력입니다.");
+                //    continue;
+                //}
+            }
+        }
+
+        void PlayerChoice()
+        {
+            Console.Clear();
+
+            int choice;
+
+            string[] arr = { "1.공격" };
+
+            while(true)
+            {
+                choice = ConsoleUtility.BattleChoice(BattleDisplay, "원하시는 행동을 입력해주세요.", arr);
+
+                switch (choice)
                 {
-                    Console.WriteLine("잘못된 입력입니다.");
-                    continue;
+                    case 1:
+                        return;
+                    default:
+                        Console.WriteLine("잘못된 입력입니다.");
+                        Thread.Sleep(1000);
+                        break;
                 }
             }
+        }
+
+        int PlayerChoiceTarget()
+        {
+            Console.Clear();
+
+            int choice;
+
+            string[] arr = { "0.취소" };
+
+
+            while (true)
+            {
+                choice = ConsoleUtility.BattleChoice(BattleDisplay, "대상을 선택해주세요.", arr, true);
+
+                switch (choice)
+                {
+                    case 0:
+                        return -1;
+                    default:
+                        if((choice > 0 && choice <= enemyList.Count) && enemyList[choice - 1].state != State.Dead) 
+                            return choice - 1;
+
+                        Console.WriteLine("잘못된 입력입니다.");
+                        Thread.Sleep(1000);
+                        break;
+                }
+            }
+        }
+
+        void PlayerAttack(Enemy e)
+        {
+            int choice;
+            Console.Clear();
+            Random random = new Random();
+            int p = (int)Math.Ceiling((double)player.playerAtk * 0.1); //10% 보정값 올림,플레이어 공격력
+            int damage = random.Next(player.playerAtk - p, player.playerAtk + p + 1); //보정값을 추가한 랜덤 공격력
+
+            Console.WriteLine($"{player.playerName}의 공격!\n");//플레이어 이름추가필요
+            Console.WriteLine($"Lv.{e.level} {e.name} 을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 기입필요
+
+            int curHP = e.hp - damage;
+            Console.Write($"HP {e.hp} -> ");
+
+            if (curHP > 0)
+            {
+                e.hp = curHP;
+                Console.WriteLine($"{curHP}\n");
+            }
+            else
+            {
+                e.state = State.Dead;
+                killCount++;
+                Console.WriteLine($"Dead\n");
+            }
+
+
+            string[] arr = { "0.다음" };
+            choice = ConsoleUtility.BattleChoice((bool none) => { }, "",arr,false);
+
+            //while (true)
+            //{
+                
+            //    switch (choice)
+            //    {
+            //        case 0:
+            //            return;
+            //        default:
+            //            Console.WriteLine("잘못된 입력입니다.");
+            //            Thread.Sleep(1000);
+            //            break;
+            //    }
+            //}
         }
 
         void EnemyPhase()

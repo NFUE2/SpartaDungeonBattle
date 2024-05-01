@@ -25,5 +25,27 @@ namespace SpartaDungeonBattle
                 Console.Write(">>");
             }
         }
+
+        public static int BattleChoice(Action<bool> action,string msg, string[] list,bool number =false)
+        {
+            int choice;
+
+            while(true)
+            {
+                action(number);
+
+                for(int i = 0; i < list.Length; i++)
+                    Console.WriteLine(list[i]);
+
+                Console.WriteLine();
+
+                Console.Write("{0}\n>>", msg);
+
+                if (int.TryParse(Console.ReadLine(), out choice)) return choice;
+
+                Console.WriteLine("잘못된 입력입니다.");
+                Thread.Sleep(1000);
+            }
+        }
     }
 }
