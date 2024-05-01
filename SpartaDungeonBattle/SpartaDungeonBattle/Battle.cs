@@ -204,5 +204,6 @@ namespace SpartaDungeonBattle
             Console.WriteLine("0.다음\n>>");
             Console.ReadLine();
         }
+
     }
 }
