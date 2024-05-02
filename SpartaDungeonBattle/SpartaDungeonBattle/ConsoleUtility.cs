@@ -9,9 +9,30 @@ namespace SpartaDungeonBattle
 {
     internal class ConsoleUtility
     {
+        public static void PrintGameHeader()
+        {
+            Console.WriteLine("=============================================================================");
+            Console.WriteLine("        ___________________   _____  __________ ___________ _____    ");
+            Console.WriteLine("       /   _____/\\______   \\ /  _  \\ \\______   \\\\__    ___//  _  \\   ");
+            Console.WriteLine("       \\_____  \\  |     ___//  /_\\  \\ |       _/  |    |  /  /_\\  \\  ");
+            Console.WriteLine("       /        \\ |    |   /    |    \\|    |   \\  |    | /    |    \\ ");
+            Console.WriteLine("      /_______  / |____|   \\____|__  /|____|_  /  |____| \\____|__  / ");
+            Console.WriteLine("              \\/                   \\/        \\/                  \\/  ");
+            Console.WriteLine(" ________    ____ ___ _______     ________ ___________________    _______");
+            Console.WriteLine(" \\______ \\  |    |   \\\\      \\   /  _____/ \\_   _____/\\_____  \\   \\      \\");
+            Console.WriteLine("  |    |  \\ |    |   //   |   \\ /   \\  ___  |    __)_  /   |   \\  /   |   \\\r\n");
+            Console.WriteLine("  |    |   \\|    |  //    |    \\\\    \\_\\  \\ |        \\/    |    \\/    |    \\\r\n");
+            Console.WriteLine(" /_______  /|______/ \\____|__  / \\______  //_______  /\\_______  /\\____|__  /\r\n");
+            Console.WriteLine("         \\/                  \\/         \\/         \\/         \\/         \\/");
+            Console.WriteLine("=============================================================================");
+            Console.WriteLine("                           PRESS ANYKEY TO START                             ");
+            Console.WriteLine("=============================================================================");
+            Console.ReadKey();
+        }
+
         public static int MenuChoice(int min, int max, string work)
         {
-            Console.WriteLine($"원하시는 {work} 입력해주세요.");
+            Console.WriteLine($"{work} 입력해주세요.");
             Console.Write(">>");
             while (true)
             {

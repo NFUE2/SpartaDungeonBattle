@@ -1,9 +1,12 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
+using System.IO;
 
 namespace SpartaDungeonBattle
 {
-    internal class Program
+
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -12,6 +15,8 @@ namespace SpartaDungeonBattle
             Battle battle = new Battle();
 
 
+            Console.Clear();
+            ConsoleUtility.PrintGameHeader(); //
             creation.Creation(); //캐릭터 생성 실행
             status.FirstStatus(creation.name, creation.job, creation.jobNumber);
             while (true)
@@ -23,15 +28,17 @@ namespace SpartaDungeonBattle
 
                 Console.WriteLine("1. 상태 보기");
                 Console.WriteLine("2. 전투 시작");
+                Console.WriteLine("3. 저장 및 종료");
+                Console.WriteLine("4. 저장 초기화");
                 Console.WriteLine();
 
-                int choice1 = ConsoleUtility.MenuChoice(1, 2, "행동을"); //행동 선택
+                int choice1 = ConsoleUtility.MenuChoice(1, 4, "원하시는 행동을"); //행동 선택
                 switch (choice1)
                 {
                     case 1: //1번 실행 시 스테이터스(상태 보기) 열람
 
                         Console.WriteLine(status.playerHp);
-                        status.Player(creation.name, creation.job, creation.jobNumber);
+                        status.Player();
                         break;
 
                     case 2: //2번 실행 시 전투 시작

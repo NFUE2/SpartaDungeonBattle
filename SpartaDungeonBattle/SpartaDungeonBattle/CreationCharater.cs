@@ -33,7 +33,7 @@ namespace SpartaDungeonBattle
             Console.WriteLine("5. 격투가  [공방일체, 장기전에 좋은 직업]");
             Console.WriteLine("");
 
-            int choice1 = ConsoleUtility.MenuChoice(1, 5, "직업을");//선택지를 입력 받음
+            int choice1 = ConsoleUtility.MenuChoice(1, 5, "원하시는 직업을");//선택지를 입력 받음
 
             switch (choice1)
             {
