@@ -32,12 +32,13 @@
 
         Console.WriteLine("1. 상태 보기 ");
         Console.WriteLine("2. 전투 시작 ");
-        Console.WriteLine("3. 회복 아이템")
+        Console.WriteLine("3. 회복 아이템");
+        Console.WriteLine("4. 휴식하기 ");
 
         Console.WriteLine("0. 게임 종료");
         Console.WriteLine("");
 
-        int choice = ConsoleUtility.PromptMenuChoice(0, 3);
+        int choice = ConsoleUtility.PromptMenuChoice(0, 4);
         switch (choice)
         {
             case 1:
@@ -49,6 +50,8 @@
             case 3:
                 ItemMenu();
                 break;
+            case 4:
+                RestMenu();
             case 0:
                 return;
         }
