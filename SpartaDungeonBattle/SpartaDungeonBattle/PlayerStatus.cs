@@ -155,5 +155,30 @@ namespace SpartaDungeonBattle
                     return;
             }
         }
+
+        public void Display()
+        {
+            Console.Clear();
+            Console.WriteLine("상태 보기");
+            Console.WriteLine("캐릭터의 정보가 표시됩니다.");
+            Console.WriteLine();
+            
+            Console.WriteLine("Lv. " + lv);
+            Console.WriteLine(playerName + " ({0})", playerJob);
+            Console.WriteLine("공격력 : " + playerAtk);
+            Console.WriteLine("방어력 : " + playerDef);
+            Console.WriteLine("체  력 : " + playerHp);
+            Console.WriteLine("Gold : " + gold + "G");
+            Console.WriteLine();
+
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+            int choice2 = ConsoleUtility.MenuChoice(0, 0, "행동을");//나가기 입력 받기 
+            switch (choice2)
+            {
+                case 0:
+                    return;
+            }
+        }
     }
 }
