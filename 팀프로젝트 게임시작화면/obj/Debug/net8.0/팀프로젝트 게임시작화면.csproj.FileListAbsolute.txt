@@ -1,0 +1,14 @@
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.GeneratedMSBuildEditorConfig.editorconfig
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.AssemblyInfoInputs.cache
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.AssemblyInfo.cs
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.csproj.CoreCompileInputs.cache
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\bin\Debug\net8.0\팀프로젝트 게임시작화면.exe
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\bin\Debug\net8.0\팀프로젝트 게임시작화면.deps.json
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\bin\Debug\net8.0\팀프로젝트 게임시작화면.runtimeconfig.json
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\bin\Debug\net8.0\팀프로젝트 게임시작화면.dll
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\bin\Debug\net8.0\팀프로젝트 게임시작화면.pdb
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.dll
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\refint\팀프로젝트 게임시작화면.dll
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.pdb
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\팀프로젝트 게임시작화면.genruntimeconfig.cache
+D:\새 폴더 (3)\팀과제\팀프로젝트 게임시작화면\팀프로젝트 게임시작화면\obj\Debug\net8.0\ref\팀프로젝트 게임시작화면.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "팀프로젝트 게임시작화면/1.0.0": {
+        "runtime": {
+          "팀프로젝트 게임시작화면.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "팀프로젝트 게임시작화면/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
