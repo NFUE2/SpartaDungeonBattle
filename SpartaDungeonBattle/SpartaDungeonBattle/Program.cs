@@ -11,6 +11,7 @@ namespace SpartaDungeonBattle
         static string path = Directory.GetCurrentDirectory() + "/save";
         static void Main(string[] args)
         {
+            ConsoleUtility.PrintGameHeader();
             CreationCharater creation = new CreationCharater();
             //PlayerStatus status = new PlayerStatus();
             Battle battle = new Battle();
@@ -27,11 +28,12 @@ namespace SpartaDungeonBattle
 
                 Console.WriteLine("이제 전투를 시작할 수 있습니다.");
                 Console.WriteLine();
-
-                Console.WriteLine("1. 상태 보기");
-                Console.WriteLine("2. 전투 시작");
-                Console.WriteLine("3. 저장 및 종료");
-                Console.WriteLine("4. 저장 초기화");
+                Console.WriteLine("◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈");
+                ConsoleUtility.TextHighlights0("1. 상태 보기");
+                ConsoleUtility.TextHighlights0("2. 전투 시작");
+                ConsoleUtility.TextHighlights0("3. 저장 및 종료");
+                ConsoleUtility.TextHighlights0("4. 저장 초기화");
+                Console.WriteLine("◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈◈");
 
                 Console.WriteLine();
 
