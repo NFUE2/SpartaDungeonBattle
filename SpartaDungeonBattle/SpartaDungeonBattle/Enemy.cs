@@ -20,7 +20,7 @@ namespace SpartaDungeonBattle
         public int hp;
         public void Display()
         {
-            Console.Write($"Lv.{level} {name} ");
+            ConsoleUtility.TextHighlights1($"  Lv.{level} {name} ");
 
             if (state == State.Alive) Console.WriteLine($"HP {hp}");
             else Console.WriteLine($"{state.ToString()}");

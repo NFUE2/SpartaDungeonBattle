@@ -11,48 +11,49 @@ namespace SpartaDungeonBattle
         static string path = Directory.GetCurrentDirectory() + "/save";
         static void Main(string[] args)
         {
+            
             CreationCharater creation = new CreationCharater();
-            //PlayerStatus status = new PlayerStatus();
             Battle battle = new Battle();
             PlayerStatus status = FileLoad();
-            
-            //creation.Creation(); //캐릭터 생성 실행
-            //status.FirstStatus(creation.name, creation.job, creation.jobNumber);
+
+
+            Console.Clear();
+            ConsoleUtility.PrintGameHeader(); //게임 화면 실행
+
+            creation.Creation(); //캐릭터 생성 실행
+            status.FirstStatus(creation.name, creation.job, creation.jobNumber);
 
             while (true)
             {
                 Console.Clear();
-                //Console.WriteLine("스파르타 던전에 오신 {0}님 환영합니다.", creation.name);
-                Console.WriteLine("스파르타 던전에 오신 {0}님 환영합니다.", status.playerName);
+                Console.WriteLine($"\n스파르타 던전에 오신 {status.playerName}님 환영합니다.");
+                Console.WriteLine("이제 전투를 시작할 수 있습니다.\n");
 
-                Console.WriteLine("이제 전투를 시작할 수 있습니다.");
-                Console.WriteLine();
+                Console.WriteLine("┌────────────────────┐");
+                ConsoleUtility.TextHighlights0("  1. 상태 보기");
+                ConsoleUtility.TextHighlights0("  2. 전투 시작");
+                ConsoleUtility.TextHighlights0("  3. 저장 및 종료");
+                ConsoleUtility.TextHighlights0("  4. 저장 초기화");
+                Console.WriteLine("└────────────────────┘\n");
 
-                Console.WriteLine("1. 상태 보기");
-                Console.WriteLine("2. 전투 시작");
-                Console.WriteLine("3. 저장 및 종료");
-                Console.WriteLine("4. 저장 초기화");
 
-                Console.WriteLine();
-
-                int choice1 = ConsoleUtility.MenuChoice(1, 4, "행동을"); //행동 선택
-                switch (choice1)
+                int choice = ConsoleUtility.MenuChoice(1, 4, "원하시는 행동을"); //행동 선택
+                switch (choice)
                 {
                     case 1: //1번 실행 시 스테이터스(상태 보기) 열람
-
-                        Console.WriteLine(status.playerHp);
-                        //status.Player(creation.name, creation.job, creation.jobNumber);
-                        status.Display();
+                        status.Player();
                         break;
 
                     case 2: //2번 실행 시 전투 시작
                         battle.DungeonBattle(ref status);
                         break;
-                    case 3:
+
+                    case 3: //3번 실행 시 파일 저장
                         FileSave(status);
                         Environment.Exit(0);
                         break;
-                    case 4:
+
+                    case 4: //4번 실행 시 파일 초기화
                         FileReset(ref status);
                         break;
                 }

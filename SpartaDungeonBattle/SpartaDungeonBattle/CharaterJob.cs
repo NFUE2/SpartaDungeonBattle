@@ -10,13 +10,13 @@ namespace SpartaDungeonBattle
 {
     public class CharaterJob()
     {
-        public int atk, def, hp;
+        public int atk, def, hp, maxHp;
 
         public void ChraterStatus()
         {
-            Console.WriteLine("공격력 : " + atk);
-            Console.WriteLine("방어력 : " + def);
-            Console.WriteLine("체  력 : " + hp);
+            Console.WriteLine("  공격력 : " + atk);
+            Console.WriteLine("  방어력 : " + def);
+            Console.WriteLine("  체  력 : " + hp);
         }
     }
 
@@ -27,6 +27,7 @@ namespace SpartaDungeonBattle
             atk = 10;
             def = 5;
             hp = 100;
+            maxHp = 100;
         }
     }
 
@@ -37,6 +38,7 @@ namespace SpartaDungeonBattle
             atk = 13;
             def = 2;
             hp = 75;
+            maxHp = 75;
         }   
     }
 
@@ -47,6 +49,7 @@ namespace SpartaDungeonBattle
             atk = 12;
             def = 3;
             hp = 85;
+            maxHp = 85;
         }
     }
 
@@ -57,6 +60,7 @@ namespace SpartaDungeonBattle
             atk = 20;
             def = 0;
             hp = 60;
+            maxHp = 60;
         }
     }
 
@@ -67,6 +71,7 @@ namespace SpartaDungeonBattle
             atk = 8;
             def = 8;
             hp = 120;
+            maxHp = 120;
         }
     }
     
