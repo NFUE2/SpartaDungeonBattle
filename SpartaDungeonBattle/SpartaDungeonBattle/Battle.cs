@@ -77,7 +77,7 @@ namespace SpartaDungeonBattle
 
             ConsoleUtility.TextHighlights0("  [내정보]");
             ConsoleUtility.TextHighlights2($"  Lv.{player.lv}  {player.playerName} ( {player.playerJob} )"); //레벨,직업 기입 필요
-            ConsoleUtility.TextHighlights2($"  HP {playerCurHp}/{player.playerHp}"); //체력 기입 필요
+            ConsoleUtility.TextHighlights2($"  HP {playerCurHp}/{player.playerMaxHp}"); //체력 기입 필요
             Console.WriteLine("└──────────────────────────────────────────────────────────────────────┘\n");
         }
 

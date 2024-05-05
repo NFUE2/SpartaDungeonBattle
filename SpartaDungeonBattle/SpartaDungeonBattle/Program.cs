@@ -14,14 +14,14 @@ namespace SpartaDungeonBattle
             
             CreationCharater creation = new CreationCharater();
             Battle battle = new Battle();
+            ConsoleUtility.PrintGameHeader(); //게임 화면 실행
             PlayerStatus status = FileLoad();
 
 
             Console.Clear();
-            ConsoleUtility.PrintGameHeader(); //게임 화면 실행
 
-            creation.Creation(); //캐릭터 생성 실행
-            status.FirstStatus(creation.name, creation.job, creation.jobNumber);
+            //creation.Creation(); //캐릭터 생성 실행
+            //status.FirstStatus(creation.name, creation.job, creation.jobNumber);
 
             while (true)
             {
