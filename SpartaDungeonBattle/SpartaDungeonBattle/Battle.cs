@@ -212,7 +212,6 @@ namespace SpartaDungeonBattle
 
             string[] arr = { "0.취소" };
 
-
             while (true)
             {
                 choice = ConsoleUtility.BattleChoice(BattleDisplay, "대상을 선택해주세요.", arr, true);
@@ -256,6 +255,11 @@ namespace SpartaDungeonBattle
                 e.state = State.Dead;
                 killCount++;
                 Console.WriteLine($"Dead\n");
+
+                if (!player.monsterRecorde.ContainsKey(e.name))
+                    player.monsterRecorde.Add(e.name, 0);
+
+                player.monsterRecorde[e.name]++;
             }
 
 
