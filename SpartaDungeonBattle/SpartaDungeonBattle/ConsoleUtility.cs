@@ -97,33 +97,5 @@ namespace SpartaDungeonBattle
                 Thread.Sleep(1000);
             }
         }
-        public static int MenuChoice(string title, string[] str, bool zero = false)
-        {
-            int choice;
-            while (true)
-            {
-                Console.Clear();
-
-                Console.WriteLine($"{title}\n");
-
-                for (int i = 0; i < str.Length; i++)
-                    Console.WriteLine(str[i]);
-
-                if (zero) Console.WriteLine("0. 돌아가기");
-
-                Console.Write("\n원하시는 행동을 입력해주세요.\n>>");
-
-                bool isSuccess = int.TryParse(Console.ReadLine(), out choice);
-
-                if (!isSuccess || (choice == 0 && !zero) || choice > str.Length || choice < 0)
-                {
-                    Console.WriteLine("잘못된 입력입니다.");
-                    Thread.Sleep(1000);
-                    continue;
-                }
-
-                return choice;
-            }
-        }
     }
 }

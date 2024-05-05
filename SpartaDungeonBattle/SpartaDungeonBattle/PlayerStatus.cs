@@ -22,8 +22,7 @@ namespace SpartaDungeonBattle
         public int playerDef;
         public int playerHp;
         public int playerMaxHp;
-        public List<Quest> quests = new List<Quest>();
-        public Dictionary<string, int> monsterRecorde = new Dictionary<string, int>();
+
 
 
         public void FirstStatus(string name, string job, int jobNumber)
