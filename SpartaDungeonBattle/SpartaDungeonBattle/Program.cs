@@ -16,7 +16,7 @@ namespace SpartaDungeonBattle
             Battle battle = new Battle();
             ConsoleUtility.PrintGameHeader(); //게임 화면 실행
             PlayerStatus status = FileLoad();
-
+            QuestBoard board = new QuestBoard(status, new MonsterKill(ref status));
 
             Console.Clear();
 
@@ -32,12 +32,13 @@ namespace SpartaDungeonBattle
                 Console.WriteLine("┌────────────────────┐");
                 ConsoleUtility.TextHighlights0("  1. 상태 보기");
                 ConsoleUtility.TextHighlights0("  2. 전투 시작");
-                ConsoleUtility.TextHighlights0("  3. 저장 및 종료");
-                ConsoleUtility.TextHighlights0("  4. 저장 초기화");
+                ConsoleUtility.TextHighlights0("  3. 퀘스트");
+                ConsoleUtility.TextHighlights0("  4. 저장 및 종료");
+                ConsoleUtility.TextHighlights0("  5. 저장 초기화");
                 Console.WriteLine("└────────────────────┘\n");
 
 
-                int choice = ConsoleUtility.MenuChoice(1, 4, "원하시는 행동을"); //행동 선택
+                int choice = ConsoleUtility.MenuChoice(1, 5, "원하시는 행동을"); //행동 선택
                 switch (choice)
                 {
                     case 1: //1번 실행 시 스테이터스(상태 보기) 열람
@@ -48,12 +49,16 @@ namespace SpartaDungeonBattle
                         battle.DungeonBattle(ref status);
                         break;
 
-                    case 3: //3번 실행 시 파일 저장
+                    case 3: //3번 실행 시 퀘스트 열람
+                        board.BoardDisplay();
+                        break;
+
+                    case 4: //4번 실행 시 파일 저장
                         FileSave(status);
                         Environment.Exit(0);
                         break;
 
-                    case 4: //4번 실행 시 파일 초기화
+                    case 5: //5번 실행 시 파일 초기화
                         FileReset(ref status);
                         break;
                 }
