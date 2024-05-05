@@ -7,11 +7,13 @@ namespace SpartaDungeonBattle
     {
         PlayerStatus player;
         List<Enemy> enemyList;
-        bool win = false;
+        bool win;
         int killCount, playerCurHp;
 
         public void DungeonBattle(ref PlayerStatus player)
         {
+            win = false;
+            killCount = 0;
             enemyList = new List<Enemy>();
             this.player = player;
             playerCurHp = player.playerHp;
@@ -48,12 +50,14 @@ namespace SpartaDungeonBattle
                 PlayerPhase();
                 EnemyPhase();
 
+                Console.WriteLine($"{killCount} {enemyList.Count}");
+                Thread.Sleep(1000);
                 if (killCount == enemyList.Count)
                 {
                     win = true;
                     break;
                 }
-                else if(player.playerHp <= 0)
+                else if(playerCurHp <= 0)
                 {
                     break;
                 }
