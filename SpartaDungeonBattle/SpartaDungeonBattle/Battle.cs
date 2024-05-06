@@ -50,8 +50,6 @@ namespace SpartaDungeonBattle
                 PlayerPhase();
                 EnemyPhase();
 
-                Console.WriteLine($"{killCount} {enemyList.Count}");
-                Thread.Sleep(1000);
                 if (killCount == enemyList.Count)
                 {
                     win = true;
@@ -197,6 +195,11 @@ namespace SpartaDungeonBattle
                     e.state = State.Dead;
                     killCount++;
                     Console.WriteLine($"Dead");
+
+                    if (!player.monsterRecorde.ContainsKey(e.name))
+                        player.monsterRecorde.Add(e.name,0);
+
+                    player.monsterRecorde[e.name]++;
                 }
             }
             else // 명중률 수치가 10 이하가 나올 시 데미지 발생 안함
