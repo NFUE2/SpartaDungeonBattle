@@ -136,8 +136,8 @@ namespace SpartaDungeonBattle
                     case 1:
                         return 1;
                     case 2:
-                        playerSkillChoice();
-                        return 2;
+                        if (playerSkillChoice()) return 2;
+                        else break;
                     default:
                         Console.WriteLine("잘못된 입력입니다.");
                         Thread.Sleep(1000);
@@ -174,7 +174,7 @@ namespace SpartaDungeonBattle
             }
         }
 
-        void playerSkillChoice()
+        bool playerSkillChoice()
         {
             while (true)
             {
@@ -185,12 +185,11 @@ namespace SpartaDungeonBattle
                 switch (choice)
                 {
                     case 0:
-                        PlayerChoice();
-                        break;
+                        return false;
 
                     case 1:
                         if (playerCurMp >= player.playerS_Mp1)
-                            return;
+                            return true;
                         else
                             Console.WriteLine("Mp가 부족합니다.");
                             break;
