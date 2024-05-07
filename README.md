@@ -1,4 +1,4 @@
-# 🎮 C10 -SpartaDungeonBattle-
+# 🎮 C10 -Sparta Dungeon Battle-
 ![1](https://github.com/NFUE2/SpartaDungeonBattle/assets/61472555/28fdbcf6-3d4d-4929-8a38-58454714a0d2)
 
 __프로젝트 제작 기간 : 2024-04-29 ~ 2024-05-06__
