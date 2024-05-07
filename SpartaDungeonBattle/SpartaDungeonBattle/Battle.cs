@@ -185,7 +185,7 @@ namespace SpartaDungeonBattle
                 switch (choice)
                 {
                     case 0:
-                        PlayerPhase();
+                        PlayerChoice();
                         break;
 
                     case 1:
@@ -240,6 +240,11 @@ namespace SpartaDungeonBattle
                     e.state = State.Dead;
                     killCount++;
                     ConsoleUtility.TextHighlights1($"Dead\n");
+
+                    if (!player.monsterRecorde.ContainsKey(e.name))
+                        player.monsterRecorde.Add(e.name, 0);
+
+                    player.monsterRecorde[e.name]++;
                 }
             }
             else // 명중률 수치가 10 이하가 나올 시 데미지 발생 안함
@@ -280,35 +285,39 @@ namespace SpartaDungeonBattle
             Console.Write("의 ");
             ConsoleUtility.TextHighlights0($"{player.playerSN1}!!");
 
-                int critical = random.Next(1, 100);
+            int critical = random.Next(1, 100);
 
-                if (critical < player.skillBonus + 15) // 크리티컬 발동 조건에서 스킬 보너스가 가산된다.
-                {
-                    double attack = skill_damage * 1.6;
-                    damage = (int)Math.Round(attack);
-                    ConsoleUtility.TextHighlights1($"  Lv.{e.level} {e.name} ");
-                    Console.WriteLine($"을(를) 맞췄습니다. [데미지 : {damage}]『치명타 공격!!』\n"); //치명타 데미지 발생
-                }
-                else // 크리티컬 불발
-                {
-                    damage = (int)Math.Round(skill_damage);
-                    ConsoleUtility.TextHighlights1($"  Lv.{e.level} {e.name} ");
-                    Console.WriteLine($"을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 발생
-                }
-                int curHP = e.hp - damage;
-                Console.Write($"  HP {e.hp} -> ");
+            if (critical < player.skillBonus + 15) // 크리티컬 발동 조건에서 스킬 보너스가 가산된다.
+            {
+                double attack = skill_damage * 1.6;
+                damage = (int)Math.Round(attack);
+                ConsoleUtility.TextHighlights1($"  Lv.{e.level} {e.name} ");
+                Console.WriteLine($"을(를) 맞췄습니다. [데미지 : {damage}]『치명타 공격!!』\n"); //치명타 데미지 발생
+            }
+            else // 크리티컬 불발
+            {
+                damage = (int)Math.Round(skill_damage);
+                ConsoleUtility.TextHighlights1($"  Lv.{e.level} {e.name} ");
+                Console.WriteLine($"을(를) 맞췄습니다. [데미지 : {damage}]\n"); //데미지 발생
+            }
+            int curHP = e.hp - damage;
+            Console.Write($"  HP {e.hp} -> ");
+            if (curHP > 0)
+            {
+                e.hp = curHP;
+                Console.WriteLine($"{curHP}");
+            }
+            else
+            {
+                e.state = State.Dead;
+                killCount++;
+                ConsoleUtility.TextHighlights1($"Dead\n");
 
-                if (curHP > 0)
-                {
-                    e.hp = curHP;
-                    Console.WriteLine($"{curHP}");
-                }
-                else
-                {
-                    e.state = State.Dead;
-                    killCount++;
-                    ConsoleUtility.TextHighlights1($"Dead\n");
-                }
+                if (!player.monsterRecorde.ContainsKey(e.name))
+                    player.monsterRecorde.Add(e.name, 0);
+
+                player.monsterRecorde[e.name]++;
+            }
             
             Console.WriteLine("└──────────────────────────────────────────────────────────────────────┘\n");
 
@@ -503,6 +512,8 @@ namespace SpartaDungeonBattle
                 Console.WriteLine("  스파르타 던전 입구로 돌아갑니다.");
                 ref int hp = ref player.playerHp;
                 hp = 1;
+                ref int mp = ref player.playerMp;
+                mp = playerCurMp;
             }
             Console.WriteLine("└─────────────────────────────────────────────────────┘\n");
 
