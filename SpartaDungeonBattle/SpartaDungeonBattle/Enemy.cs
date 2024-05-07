@@ -18,6 +18,7 @@ namespace SpartaDungeonBattle
         public int level, atk;
         public string name;
         public int hp;
+        public int enemyNumber;
         public void Display()
         {
             ConsoleUtility.TextHighlights1($"  Lv.{level} {name} ");
@@ -36,6 +37,7 @@ namespace SpartaDungeonBattle
             hp = 15;
             atk = 5;
             state = State.Alive;
+            enemyNumber = 1;
         }
     }
     public class SiegeMinion : Enemy
@@ -47,6 +49,7 @@ namespace SpartaDungeonBattle
             hp = 25;
             atk = 8;
             state = State.Alive;
+            enemyNumber = 2;
         }
     }
     public class HollowWorm : Enemy
@@ -58,6 +61,7 @@ namespace SpartaDungeonBattle
             hp = 10;
             atk = 9;
             state = State.Alive;
+            enemyNumber = 3;
         }
     }
 }

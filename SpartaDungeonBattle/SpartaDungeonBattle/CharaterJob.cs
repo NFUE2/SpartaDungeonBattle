@@ -11,6 +11,11 @@ namespace SpartaDungeonBattle
     public class CharaterJob()
     {
         public int atk, def, hp, maxHp;
+        public string skillName1;
+        public string skillAbility1;
+        public int skillMp1;
+        public double persent;
+        public int bonus;
 
         public void ChraterStatus()
         {
@@ -28,6 +33,11 @@ namespace SpartaDungeonBattle
             def = 5;
             hp = 100;
             maxHp = 100;
+            skillName1 = "파워 슬래쉬";
+            skillMp1 = 10;
+            skillAbility1 = "적 1명에게 공격력 200%의 데미지를 줍니다.(크리티컬 +10%)";
+            persent = 2.0;
+            bonus = 10;
         }
     }
 
@@ -39,6 +49,11 @@ namespace SpartaDungeonBattle
             def = 2;
             hp = 75;
             maxHp = 75;
+            skillName1 = "저격";
+            skillMp1 = 10;
+            skillAbility1 = "적 1명에게 공격력 150%의 데미지를 줍니다. (크리티컬 +25%)";
+            persent = 1.5;
+            bonus = 25;
         }   
     }
 
@@ -50,6 +65,11 @@ namespace SpartaDungeonBattle
             def = 3;
             hp = 85;
             maxHp = 85;
+            skillName1 = "암살";
+            skillMp1 = 20;
+            skillAbility1 = "적 1명에게 공격력 200%의 데미지를 줍니다. (크리티컬 +25%)";
+            persent = 2.0;
+            bonus = 25;
         }
     }
 
@@ -61,6 +81,11 @@ namespace SpartaDungeonBattle
             def = 0;
             hp = 60;
             maxHp = 60;
+            skillName1 = "익스플로전!!";
+            skillMp1 = 50;
+            skillAbility1 = "적 1명에게 공격력 500%의 데미지를 줍니다.";
+            persent = 5.0;
+            bonus = 0;
         }
     }
 
@@ -72,6 +97,11 @@ namespace SpartaDungeonBattle
             def = 8;
             hp = 120;
             maxHp = 120;
+            skillName1 = "정권!!";
+            skillMp1 = 20;
+            skillAbility1 = "적 1명에게 공격력 300%의 데미지를 줍니다. (크리티컬 +25%)";
+            persent = 3.0;
+            bonus = 25;
         }
     }
     

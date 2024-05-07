@@ -15,26 +15,26 @@ namespace SpartaDungeonBattle
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            ConsoleUtility.TextHighlights2("       _________                        __               ________                     ____                          ");
-            ConsoleUtility.TextHighlights2("      /   _____/______ _____  _______ _/  |_ _____       \\______ \\   __ __   ____    / ___\\   ____   ____    ____   ");
-            ConsoleUtility.TextHighlights2("      \\_____  \\ \\____ \\\\__  \\ \\_  __ \\\\   __\\\\__  \\       |    |  \\ |  |  \\ /    \\  / /_/  >_/ __ \\ /  _ \\  /    \\  ");
-            ConsoleUtility.TextHighlights2("      /        \\|  |_> >/ __ \\_|  | \\/ |  |   / __ \\_     |    `   \\|  |  /|   |  \\ \\___  / \\  ___/(  <_> )|   |  \\ ");
-            ConsoleUtility.TextHighlights2("     /_______  /|   __/(____  /|__|    |__|  (____  /    /_______  /|____/ |___|  //_____/   \\___  >\\____/ |___|  / ");
-            ConsoleUtility.TextHighlights2("             \\/ |__|        \\/                    \\/             \\/             \\/               \\/             \\/  ");
+            ConsoleUtility.TextHighlights3("       _________                        __               ________                     ____                          ");
+            ConsoleUtility.TextHighlights3("      /   _____/______ _____  _______ _/  |_ _____       \\______ \\   __ __   ____    / ___\\   ____   ____    ____   ");
+            ConsoleUtility.TextHighlights3("      \\_____  \\ \\____ \\\\__  \\ \\_  __ \\\\   __\\\\__  \\       |    |  \\ |  |  \\ /    \\  / /_/  >_/ __ \\ /  _ \\  /    \\  ");
+            ConsoleUtility.TextHighlights3("      /        \\|  |_> >/ __ \\_|  | \\/ |  |   / __ \\_     |    `   \\|  |  /|   |  \\ \\___  / \\  ___/(  <_> )|   |  \\ ");
+            ConsoleUtility.TextHighlights3("     /_______  /|   __/(____  /|__|    |__|  (____  /    /_______  /|____/ |___|  //_____/   \\___  >\\____/ |___|  / ");
+            ConsoleUtility.TextHighlights3("             \\/ |__|        \\/                    \\/             \\/             \\/               \\/             \\/  ");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            ConsoleUtility.TextHighlights2("                                     __________          __     __   .__                                            ");
-            ConsoleUtility.TextHighlights2("                                     \\______   \\_____  _/  |_ _/  |_ |  |    ____                                   ");
-            ConsoleUtility.TextHighlights2("                                      |    |  _/\\__  \\ \\   __\\\\   __\\|  |  _/ __ \\                                  ");
-            ConsoleUtility.TextHighlights2("                                      |    |   \\ / __ \\_|  |   |  |  |  |__\\  ___/                                  ");
-            ConsoleUtility.TextHighlights2("                                      |______  /(____  /|__|   |__|  |____/ \\___  >                                 ");
-            ConsoleUtility.TextHighlights2("                                             \\/      \\/                         \\/                                  ");
+            ConsoleUtility.TextHighlights3("                                     __________          __     __   .__                                            ");
+            ConsoleUtility.TextHighlights3("                                     \\______   \\_____  _/  |_ _/  |_ |  |    ____                                   ");
+            ConsoleUtility.TextHighlights3("                                      |    |  _/\\__  \\ \\   __\\\\   __\\|  |  _/ __ \\                                  ");
+            ConsoleUtility.TextHighlights3("                                      |    |   \\ / __ \\_|  |   |  |  |  |__\\  ___/                                  ");
+            ConsoleUtility.TextHighlights3("                                      |______  /(____  /|__|   |__|  |____/ \\___  >                                 ");
+            ConsoleUtility.TextHighlights3("                                             \\/      \\/                         \\/                                  ");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             ConsoleUtility.TextHighlights0("========================================================================================================================");
-            ConsoleUtility.TextHighlights2("                                                PRESS ANYKEY TO START                             ");
+            ConsoleUtility.TextHighlights3("                                                PRESS ANYKEY TO START                             ");
             ConsoleUtility.TextHighlights0("========================================================================================================================");
             Console.ReadKey();
         }
@@ -54,6 +54,13 @@ namespace SpartaDungeonBattle
         }
 
         public static void TextHighlights2(string s1 = "") //초록색으로 폰트 색상 변경
+        {
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(s1);
+            Console.ResetColor();
+        }
+        public static void TextHighlights3(string s1 = "") //초록색으로 폰트 색상 변경
         {
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -123,6 +130,19 @@ namespace SpartaDungeonBattle
                 }
 
                 return choice;
+            }
+        }
+
+        public static void Next() // "다음" 메소드
+        {
+            while (true)
+            {
+                int choice;
+
+                Console.Write("\n0.다음\n>>");
+
+                if (int.TryParse(Console.ReadLine(), out choice) && choice == 0) break;
+                else Console.WriteLine("잘못된 입력입니다.");
             }
         }
     }
