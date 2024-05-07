@@ -136,6 +136,7 @@ namespace SpartaDungeonBattle
                     case 1:
                         return 1;
                     case 2:
+                        playerSkillChoice();
                         return 2;
                     default:
                         Console.WriteLine("잘못된 입력입니다.");
@@ -188,7 +189,7 @@ namespace SpartaDungeonBattle
                         break;
 
                     case 1:
-                        if (playerCurMp > player.playerS_Mp1)
+                        if (playerCurMp >= player.playerS_Mp1)
                             return;
                         else
                             Console.WriteLine("Mp가 부족합니다.");
