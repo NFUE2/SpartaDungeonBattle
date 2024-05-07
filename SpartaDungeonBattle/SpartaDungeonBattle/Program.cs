@@ -15,6 +15,7 @@ namespace SpartaDungeonBattle
             CreationCharater creation = new CreationCharater();
             Battle battle = new Battle();
             ConsoleUtility.PrintGameHeader(); //게임 화면 실행
+            Thread.Sleep(3000);
             PlayerStatus status = FileLoad();
             QuestBoard board = new QuestBoard(status, new MonsterKill(ref status));
             Potion potion = new Potion();

@@ -30,7 +30,7 @@ namespace SpartaDungeonBattle
             ConsoleUtility.TextHighlights0("  0. 나가기");
             Console.WriteLine("└───────────────────────────────────┘\n");
 
-            int potionChoice = ConsoleUtility.MenuChoice(0, 2, "사용하실 포션을");
+            int potionChoice = ConsoleUtility.MenuChoice(0, 3, "사용하실 포션을");
 
             switch (potionChoice)
             {
